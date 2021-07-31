@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { getMovieList } from './redux/actions/movieList.actions';
 
+
+
 let App = ({ movieList, getMovieList  }) => {
   useEffect(() => {
     getMovieList();
