@@ -1,0 +1,124 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Run Server & Client",
+            "configurations": ["Concurrent Server", "Concurrent Client"],
+            "preLaunchTask": "npm run debug:dev",
+            "presentation": {
+                "hidden": false,
+                "group": "Concurrent",
+                "order": 1
+            }
+        }
+    ],
+    "configurations": [
+        {
+            "name": "node test.js",
+            "program": "${workspaceFolder}/test.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        /** Run Configs **/
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Heroku",
+            "address": "localhost",
+            "port": 9229,
+            "protocol": "inspector",
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/app",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            // Server
+            "type": "node",
+            "request": "launch",
+            "name": "Run Server",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
+            "program": "${workspaceFolder}/Server.js",
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            //"postDebugTask": "killRunningTerminal",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**"
+            ],
+            "env": {
+                "DEBUG": "true"
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "Run",
+                "order": 1
+            }
+        },
+        {
+            // Client
+            "type": "chrome",
+            "request": "launch",
+            "name": "Run Client",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/src",
+            "preLaunchTask": "npm run debug:client",
+            "internalConsoleOptions": "neverOpen",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "Run",
+                "order": 2
+            }
+        },
+        /** Server & Client Compound Configs **/
+        {
+            // Client
+            "type": "chrome",
+            "request": "launch",
+            "name": "Concurrent Client",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/src",
+            "internalConsoleOptions": "neverOpen",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**"
+            ],
+            "presentation": {
+                "hidden": true,
+                "group": "Compound",
+                "order": 1
+            }
+        },
+        {
+            // Server
+            "type": "node",
+            "request": "attach",
+            "name": "Concurrent Server",
+            "restart": true,
+            "stopOnEntry": false,
+            "port": 9229,
+            // "postDebugTask": "killRunningTask",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**"
+            ],
+            "presentation": {
+                "hidden": true,
+                "group": "Compound",
+                "order": 2
+            }
+        }
+    ]
+}

@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,13 +11,13 @@ import Navbar from './components/Navbar';
 
 ReactDOM.render(
   <Provider store={configureStore()}>
-    <Router>
+    <HashRouter>
       <Navbar/>
       <Switch>
         <Route exact path="/" component={MovieSearch} />
-        <Route exact path="/movie-list" component={App} />
+        <Route path="/movie-list" component={App} />
       </Switch>
-    </Router>
+    </HashRouter>
   </Provider>,
   document.getElementById('root')
 );
