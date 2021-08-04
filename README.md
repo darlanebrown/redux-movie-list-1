@@ -1,3 +1,8 @@
+# Create a .env file before running!
+
+### REACT_APP_THEMOVIEDB_API_KEY=<YOUR API KEY HERE>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
