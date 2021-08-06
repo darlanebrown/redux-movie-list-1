@@ -2,7 +2,7 @@
   "name": "redux-example",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://albermjames.github.io/redux-movie-list",
+  "homepage": "https://github.com/darlanebrown/redux-movie-list-1.git",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
